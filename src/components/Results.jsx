@@ -11,8 +11,21 @@ function Results ({userAnswers, questionBank, restartQuiz}) {
     const score = getScore()
     return (
         <div>
-            <h2>Quiz Completed!</h2>
-            <p>Your Score: {score}/{questionBank.length}</p>
+            <h2>Quiz Completed 🎉</h2>
+            <p className="score">Your Score: {score}/{questionBank.length}</p>
+
+            <ul>
+                {questionBank.map((q, index) => (
+                    <li key={index}>
+                    <p>{q.question}</p>
+                    <p>Your answer: {userAnswers[index]}</p>
+                    <p>
+                        Correct answer: {q.answer}
+                    </p>
+                    </li>
+                ))}
+            </ul>
+
             <button className="restart-button" onClick={restartQuiz}>Restart Quiz</button>
         </div>
     )
